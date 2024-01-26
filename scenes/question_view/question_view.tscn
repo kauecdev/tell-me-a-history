@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://8doijujoe07h"]
+
+[ext_resource type="Script" path="res://scenes/question_view/question_view.gd" id="1_q6qx7"]
+[ext_resource type="PackedScene" uid="uid://c5whdbg6awdut" path="res://commons/player_name_label/player_name_label.tscn" id="2_sbw85"]
+[ext_resource type="PackedScene" uid="uid://br632y4j8g2br" path="res://commons/pass_to_player_button/pass_to_player_button.tscn" id="3_h4221"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5y1p8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrd0w"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="Question" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q6qx7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1088.0
+offset_bottom = 1920.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5y1p8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1084.0
+offset_bottom = 1912.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 200
+
+[node name="PlayerNameLabel" parent="Panel/MarginContainer" instance=ExtResource("2_sbw85")]
+layout_mode = 2
+
+[node name="QuestionLabel" type="Label" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_jrd0w")
+text = "voce que vai  sentar na cabeca do maluco muito doido"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PassToPlayerButton" parent="Panel/MarginContainer" instance=ExtResource("3_h4221")]
+layout_mode = 2
+
+[connection signal="button_down" from="Panel/MarginContainer/PassToPlayerButton" to="." method="_on_pass_to_player_button_button_down"]

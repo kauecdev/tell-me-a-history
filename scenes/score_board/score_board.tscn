@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsvrold8bb5w6"]
+
+[ext_resource type="Script" path="res://scenes/score_board/score_board.gd" id="1_d577o"]
+[ext_resource type="FontFile" uid="uid://d0qbiote7dfg3" path="res://assets/fonts/Inter-SemiBold.ttf" id="2_u0qub"]
+[ext_resource type="StyleBox" uid="uid://b7lc7fso0ahnh" path="res://global_theme/normal_button.tres" id="3_y67f0"]
+[ext_resource type="StyleBox" uid="uid://dsj5rtelk1wnk" path="res://global_theme/pressed_button.tres" id="4_ngnmr"]
+[ext_resource type="StyleBox" uid="uid://c14jan4u2vrbh" path="res://global_theme/disabled_button.tres" id="5_xn3gm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tm6vp"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ScoreBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d577o")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1088.0
+offset_bottom = 1920.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tm6vp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1084.0
+offset_bottom = 1912.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PlayerNames" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel/MarginContainer"]
+layer = 2
+
+[node name="NextRoundButton" type="Button" parent="Panel/MarginContainer/CanvasLayer"]
+offset_left = 60.0
+offset_top = 1614.0
+offset_right = 1024.0
+offset_bottom = 1712.0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_u0qub")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("3_y67f0")
+theme_override_styles/pressed = ExtResource("4_ngnmr")
+theme_override_styles/disabled = ExtResource("5_xn3gm")
+text = "Next round:"
+
+[node name="MenuButton" type="Button" parent="Panel/MarginContainer/CanvasLayer"]
+visible = false
+offset_left = 60.0
+offset_top = 1614.0
+offset_right = 1024.0
+offset_bottom = 1712.0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_u0qub")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("3_y67f0")
+theme_override_styles/pressed = ExtResource("4_ngnmr")
+theme_override_styles/disabled = ExtResource("5_xn3gm")
+text = "Menu"
+
+[connection signal="button_down" from="Panel/MarginContainer/CanvasLayer/NextRoundButton" to="." method="_on_next_round_button_button_down"]
+[connection signal="button_down" from="Panel/MarginContainer/CanvasLayer/MenuButton" to="." method="_on_menu_button_button_down"]

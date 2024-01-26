@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbvufggf756mi"]
+
+[ext_resource type="StyleBox" uid="uid://b7lc7fso0ahnh" path="res://global_theme/normal_button.tres" id="1_2evpr"]
+[ext_resource type="Script" path="res://scenes/confirm_identity/confirm_identity.gd" id="1_b0w6g"]
+[ext_resource type="StyleBox" uid="uid://dsj5rtelk1wnk" path="res://global_theme/pressed_button.tres" id="2_0ppwm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmc5j"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ConfirmIdentity" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b0w6g")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1088.0
+offset_bottom = 1920.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmc5j")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1084.0
+offset_bottom = 1912.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 200
+
+[node name="IAmPlayerButton" type="Button" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.109804, 0.109804, 0.109804, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("1_2evpr")
+theme_override_styles/pressed = ExtResource("2_0ppwm")
+theme_override_styles/focus = ExtResource("1_2evpr")
+text = "I am player"
+
+[connection signal="button_down" from="Panel/MarginContainer/IAmPlayerButton" to="." method="_on_i_am_player_button_button_down"]

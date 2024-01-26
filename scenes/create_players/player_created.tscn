@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1frtf3nocuww"]
+
+[ext_resource type="Script" path="res://scenes/create_players/player_created.gd" id="1_g0ync"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fhr2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lakxj"]
+bg_color = Color(0.827451, 0.827451, 0.827451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[node name="PlayerCreated" type="HBoxContainer"]
+theme_override_constants/separation = 30
+script = ExtResource("1_g0ync")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="RemovePlayerButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_8fhr2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lakxj")
+text = "-"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 50
+text = "Player1"
+
+[connection signal="pressed" from="RemovePlayerButton" to="." method="_on_remove_player_button_pressed"]

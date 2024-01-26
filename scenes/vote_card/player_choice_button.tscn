@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://61fwj6a6n07g"]
+
+[ext_resource type="StyleBox" uid="uid://ruoof4u43yko" path="res://global_theme/input.tres" id="1_mmgix"]
+[ext_resource type="Script" path="res://scenes/vote_card/player_choice_button.gd" id="2_43mna"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utnv"]
+bg_color = Color(0.890196, 0.890196, 0.890196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.890196, 0.890196, 0.890196, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 0
+
+[node name="PlayerChoiceButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("1_mmgix")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4utnv")
+script = ExtResource("2_43mna")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "option"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="button_down" from="PlayerChoiceButton" to="PlayerChoiceButton" method="_on_button_down"]

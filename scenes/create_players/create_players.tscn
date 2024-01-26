@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3 uid="uid://eil1nrcmwqeb"]
+
+[ext_resource type="FontFile" uid="uid://d0qbiote7dfg3" path="res://assets/fonts/Inter-SemiBold.ttf" id="1_amo4i"]
+[ext_resource type="Script" path="res://scenes/create_players/create_players.gd" id="1_tbfkq"]
+[ext_resource type="PackedScene" uid="uid://d1frtf3nocuww" path="res://scenes/create_players/player_created.tscn" id="2_quj1u"]
+[ext_resource type="StyleBox" uid="uid://ba8ls2tqp8t3w" path="res://global_theme/normal_small_button.tres" id="3_34f31"]
+[ext_resource type="StyleBox" uid="uid://ruoof4u43yko" path="res://global_theme/input.tres" id="3_37uor"]
+[ext_resource type="StyleBox" uid="uid://dh4stggbo5wec" path="res://global_theme/pressed_small_button.tres" id="4_5fm1v"]
+[ext_resource type="StyleBox" uid="uid://b7lc7fso0ahnh" path="res://global_theme/normal_button.tres" id="4_ic2ur"]
+[ext_resource type="StyleBox" uid="uid://dsj5rtelk1wnk" path="res://global_theme/pressed_button.tres" id="5_w4dub"]
+[ext_resource type="StyleBox" uid="uid://c14jan4u2vrbh" path="res://global_theme/disabled_button.tres" id="6_l8rfc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lqb8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af331"]
+bg_color = Color(0.6, 0.6, 0.6, 0.258824)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47451, 0.47451, 0.47451, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+expand_margin_left = 40.0
+expand_margin_top = 20.0
+expand_margin_right = 40.0
+expand_margin_bottom = 20.0
+
+[node name="CreatePlayers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tbfkq")
+PLAYER_CREATED = ExtResource("2_quj1u")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1088.0
+offset_bottom = 1920.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6lqb8")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1084.0
+offset_bottom = 1912.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 200
+
+[node name="RequiredMessage" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Required at least 3 players.
+Max players: 5"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Add players:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="PlayerNameInput" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_37uor")
+theme_override_styles/focus = ExtResource("3_37uor")
+
+[node name="AddPlayerButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("3_34f31")
+theme_override_styles/pressed = ExtResource("4_5fm1v")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_af331")
+theme_override_styles/focus = ExtResource("3_34f31")
+text = "+"
+icon_alignment = 1
+
+[node name="PlayerNames" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel/MarginContainer"]
+layer = 2
+
+[node name="StartButton" type="Button" parent="Panel/MarginContainer/CanvasLayer"]
+offset_left = 60.0
+offset_top = 1614.0
+offset_right = 1024.0
+offset_bottom = 1712.0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_amo4i")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("4_ic2ur")
+theme_override_styles/pressed = ExtResource("5_w4dub")
+theme_override_styles/disabled = ExtResource("6_l8rfc")
+text = "Start
+"
+
+[connection signal="text_changed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/PlayerNameInput" to="." method="_on_player_name_input_text_changed"]
+[connection signal="button_down" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/AddPlayerButton" to="." method="_on_add_player_button_button_down"]
+[connection signal="button_down" from="Panel/MarginContainer/CanvasLayer/StartButton" to="." method="_on_start_button_button_down"]
