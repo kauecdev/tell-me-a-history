@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqcroj0mr2saj"]
+
+[ext_resource type="FontFile" uid="uid://d0qbiote7dfg3" path="res://assets/fonts/Inter-SemiBold.ttf" id="1_75esx"]
+[ext_resource type="Script" path="res://scenes/rules/rules.gd" id="1_c05ap"]
+[ext_resource type="StyleBox" uid="uid://b7lc7fso0ahnh" path="res://global_theme/normal_button.tres" id="2_38xy6"]
+[ext_resource type="StyleBox" uid="uid://dsj5rtelk1wnk" path="res://global_theme/pressed_button.tres" id="3_6oqlr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drkrv"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Rules" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c05ap")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1088.0
+offset_bottom = 1920.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_drkrv")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1084.0
+offset_bottom = 1912.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 200
+
+[node name="Label" type="Label" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 58
+text = "'Tell me a story' is a game of questions and answers.
+The game is composed by rounds, where each round has a player as judge and other players as, well, players.
+
+Each round the players will be choosing one sentence to answer or complete the round question or sentence. After all players choose their answers, the judge player will choose which was the better one and then the player gets a point.
+
+The player who gets five points wins the game."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_75esx")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = ExtResource("2_38xy6")
+theme_override_styles/pressed = ExtResource("3_6oqlr")
+text = "Back"
+
+[connection signal="button_down" from="Panel/MarginContainer/BackButton" to="." method="_on_back_button_button_down"]
