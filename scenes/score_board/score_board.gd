@@ -21,7 +21,7 @@ func _ready():
 		player_name_label.text = players[i].name + ": "+ str(players[i].score) + " pts"
 		player_names.add_child(player_name_label)
 		
-		if players[i].score == 5:
+		if players[i].score == 3:
 			player_winner = players[i]
 	
 	if player_winner != null:

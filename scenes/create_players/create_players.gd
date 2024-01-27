@@ -41,7 +41,7 @@ func _on_add_player_button_button_down():
 
 
 func _on_player_name_input_text_changed(_new_text):
-	if player_name_input.text.length() > 0:
+	if player_name_input.text.length() > 0 and game_controller.players.size() < 5:
 		add_player_button.disabled = false
 	else:
 		add_player_button.disabled = true
