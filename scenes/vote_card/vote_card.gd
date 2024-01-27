@@ -10,7 +10,6 @@ extends Control
 func _ready():
 	question_label.text = session_controller.current_round.question.text
 	
-	var current_player = game_controller.current_player
 	var player_choices = session_controller.current_round.player_choices
 	var player_choices_keys = player_choices.keys()
 	
@@ -20,6 +19,5 @@ func _ready():
 		var new_node_name = "PlayerChoiceButton" + str(i)
 		new_player_choice_button.name = new_node_name
 		new_player_choice_button.get_node("PlayerChoiceButton").player_id = i
-		new_player_choice_button.get_node("PlayerChoiceButton").card_id = player_choice.id
 		new_player_choice_button.get_node("Label").text = player_choice.text
 		player_choices_container.add_child(new_player_choice_button)

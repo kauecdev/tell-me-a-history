@@ -40,7 +40,7 @@ func _on_add_player_button_button_down():
 		add_player_button.disabled = true
 
 
-func _on_player_name_input_text_changed(new_text):
+func _on_player_name_input_text_changed(_new_text):
 	if player_name_input.text.length() > 0:
 		add_player_button.disabled = false
 	else:

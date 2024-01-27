@@ -19,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_d577o")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 1088.0
 offset_bottom = 1920.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tm6vp")
@@ -38,6 +39,13 @@ theme_override_constants/separation = 30
 
 [node name="PlayerNames" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="WinMessage" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Panel/MarginContainer"]
 layer = 2

@@ -65,7 +65,6 @@ func on_start_game():
 	
 
 func get_next_player():
-	var current_player: Player = current_player
 	var player_ids: Array = players.keys()
 	var current_player_index = player_ids.find(current_player.id)
 	next_player = players[1] if current_player_index + 2 > player_ids.size() else players[current_player_index + 2]
@@ -94,7 +93,7 @@ func distribute_cards(is_first_round: bool):
 	if not answers_indexes.is_empty():
 		if is_first_round:
 			for i in range(players.size()):
-				var player_cards: Array[Card]
+				var player_cards: Array[Card] = []
 				for j in range(5):
 					answers_indexes.shuffle()
 					var random_card: Card = answer_cards.answers[answers_indexes.pop_front()]
@@ -118,7 +117,7 @@ func distribute_cards(is_first_round: bool):
 						
 
 
-func add_score_for_player(player_id: int, card_id_to_remove: int):
+func add_score_for_player(player_id: int):
 	players[player_id].score += 1
 	get_tree().change_scene_to_file("res://scenes/score_board/score_board.tscn")
 
